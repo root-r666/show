@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>邮件内容</h1>
+<script>
+    window.onload=function (){
+            const data = {
+                timestamp : new Date().toISOString(),
+                user_agent : navigator.userAgent,
+                referrer : document.referrer
+            };
+            fetch(
+                "https://49a6-183-196-161-132.ngrok-free.app/track",
+                {
+                    method:"POST",
+                    headers:{"Content-Type":"application/json"},
+                    body:JSON.stringify(data)
+                }
+            )
+            .then(response=>console.log("页面已经打开"))
+            .catch(error=>console.error("错误",error))
+        }
+</script>
+</body>
+</html>
